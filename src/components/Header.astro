@@ -1,0 +1,89 @@
+---
+import logo from "../images/logo.svg"
+import mobileLogo from "../images/mobileLogo.svg"
+
+---
+
+<section class="navigation">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="/">
+          <img  class="webLogo" src={logo.src} />
+          <img  class="mobLogo" src={mobileLogo.src} />
+        </a>
+      </div>
+      <nav>
+      
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+       
+          <li>
+
+            <a href="#!">Services</a>
+            <ul class="nav-dropdown">
+              <li><a href="/seo">SEO</a></li>
+              <li><a href="/local-seo">Local SEO</a></li>
+              <li><a href="/ads-management">Ads Management</a></li>
+              <li><a href="/web-development">Website Development</a></li>
+              <li><a href="/social-media-management">Social Media Management</a></li>
+              <li><a href="/graphic-design"> Graphics Design</a></li>
+            </ul>
+          </li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li class="contact" id="mobile_contact">
+            <a href="">Contact us </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-mobile"  id="nav-toggle">
+       
+          <span></span>
+       
+      </div>
+      <div class="contact" id="web_contact">
+        <a href="">Contact us </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(
+        "nav ul li > a:not(:only-child)"
+      );
+      const navDropdowns = document.querySelectorAll(".nav-dropdown");
+      const navToggle = document.getElementById("nav-toggle");
+
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          const siblingDropdown = this.nextElementSibling;
+
+          if (siblingDropdown["style"].display === "block") {
+            siblingDropdown["style"].display = "none";
+          } else {
+            siblingDropdown["style"].display = "block";
+          }
+          e.stopPropagation();
+        });
+      });
+      
+      document.addEventListener('click', function() {
+    navDropdowns.forEach(function(dropdown) {
+      dropdown["style"].display = 'none';
+    });
+  });
+
+      navToggle.addEventListener("click", function () {
+        const navUl = document.querySelector("nav ul");
+        if (navUl["style"].display === "block") {
+          navUl["style"].display = "none";
+        } else {
+          navUl["style"].display = "block";
+        } 
+        
+     
+    this.classList.toggle('active');
+      });
+    });
+  </script>
